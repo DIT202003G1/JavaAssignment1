@@ -17,7 +17,7 @@ public class Question1 {
 		DecimalFormat dformat = new DecimalFormat("#.##");
 
 		//Create GUI elements' instances
-		final JFrame[] MainWindow = {new JFrame("Production Calculator")};
+		final JFrame MainWindow = new JFrame("Production Calculator");
 		JButton calculateButton = new JButton("Calculate");
 		JTextField literInputField = new JTextField();
 		JLabel inputLabel = new JLabel("Milk Production:");
@@ -44,21 +44,21 @@ public class Question1 {
 		);
 
 		//Set element Size and Position
-		MainWindow[0].setSize(400,200);
+		MainWindow.setSize(400,200);
 		calculateButton.setBounds(280,110,100, 40);
 		instructionLabel.setBounds(20,10,360,43);
 		literInputField.setBounds(150, 60,230,35);
 		inputLabel.setBounds(20,60,150,35);
 
 		//Add GUI Elements to Window
-		MainWindow[0].add(calculateButton);
-		MainWindow[0].add(instructionLabel);
-		MainWindow[0].add(literInputField);
-		MainWindow[0].add(inputLabel);
+		MainWindow.add(calculateButton);
+		MainWindow.add(instructionLabel);
+		MainWindow.add(literInputField);
+		MainWindow.add(inputLabel);
 
 		//Some Configurations and Display Window
-		MainWindow[0].setLayout(null);
-		MainWindow[0].setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //Sets Close Button to EXIT instead of hide window!!
-		MainWindow[0].setVisible(true);
+		MainWindow.setLayout(null);
+		MainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //Sets Close Button to EXIT instead of hide window!!
+		MainWindow.setVisible(true);
     }
 }
