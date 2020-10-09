@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.text.MessageFormat;
+import java.text.DecimalFormat;
 
 //Milk Carton Question, 20 Marks
 public class Question1 {
@@ -28,6 +29,7 @@ public class Question1 {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						double inputLiters = Double.parseDouble(literInputField.getText());
+						if (inputLiters < 0) throw new Exception("Negative Liter Number");
 						double cartons = inputLiters/CARTON_UNIT; //Calculate Cartons Needed
 						double cost = inputLiters * COST_PER_LITER; //Calculate Price
 						double profit = cartons * PROFIT_PER_CARTON; //Calculate Profit
