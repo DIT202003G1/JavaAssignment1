@@ -14,6 +14,7 @@ public class Question1 {
 		final double CARTON_UNIT = 3.78;
 		final double COST_PER_LITER = 0.38;
 		final double PROFIT_PER_CARTON = 0.27;
+		DecimalFormat dformat = new DecimalFormat("#.##");
 
 		//Create GUI elements' instances
 		final JFrame[] MainWindow = {new JFrame("Production Calculator")};
@@ -33,7 +34,7 @@ public class Question1 {
 						double cartons = inputLiters/CARTON_UNIT; //Calculate Cartons Needed
 						double cost = inputLiters * COST_PER_LITER; //Calculate Price
 						double profit = cartons * PROFIT_PER_CARTON; //Calculate Profit
-						JOptionPane.showMessageDialog(null,MessageFormat.format("The calculation result of {0} Liters.\n\nCartons: {1}\nCost: ${2}\nProfit: ${3}",inputLiters,cartons,cost,profit),"Calculation Result",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null,MessageFormat.format("The calculation result of {0} Liters.\n\nCartons: {1}\nCost: ${2}\nProfit: ${3}",inputLiters,dformat.format(cartons),dformat.format(cost),dformat.format(profit)),"Calculation Result",JOptionPane.INFORMATION_MESSAGE);
 					} catch(Exception exception) {
 						JOptionPane.showMessageDialog(null,"Something went wrong! Please re-enter the numbers!\n\nThe number has be POSITIVE without any other words (such as english letters)","Message",JOptionPane.ERROR_MESSAGE);
 						literInputField.setText("");
