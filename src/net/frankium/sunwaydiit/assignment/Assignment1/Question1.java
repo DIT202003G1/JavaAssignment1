@@ -61,6 +61,7 @@ public class Question1 {
 		//Some Configurations and Display Window
 		MainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //Sets Close Button to EXIT instead of hide window!!
 		MainWindow.setResizable(false); //makes the window not resizable
+		MainWindow.setLayout(null); //disable panels and layouts (i will just use coordinates)
 		MainWindow.setVisible(true); //display the window
     }
 }

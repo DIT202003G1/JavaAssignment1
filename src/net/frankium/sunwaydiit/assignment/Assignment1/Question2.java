@@ -33,6 +33,7 @@ public class Question2 {
 		MainWindow.add(inputLabel);
 		MainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		MainWindow.setResizable(false);
+		MainWindow.setLayout(null);
 		MainWindow.setVisible(true);
 
 		sortButton.addActionListener(
