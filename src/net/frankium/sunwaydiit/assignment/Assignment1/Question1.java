@@ -36,7 +36,9 @@ public class Question1 {
 						double profit = cartons * PROFIT_PER_CARTON; //Calculate Profit
 						JOptionPane.showMessageDialog(null,MessageFormat.format("The calculation result of {0} Liters.\n\nCartons: {1}\nCost: ${2}\nProfit: ${3}",inputLiters,dformat.format(cartons),dformat.format(cost),dformat.format(profit)),"Calculation Result",JOptionPane.INFORMATION_MESSAGE);
 					} catch(Exception exception) {
-						JOptionPane.showMessageDialog(null,"Something went wrong! Please re-enter the numbers!\n\nThe number has be POSITIVE without any other words (such as english letters)","Message",JOptionPane.ERROR_MESSAGE);
+						String message = "Something went wrong! Please re-enter the numbers!\n\nThe number has be POSITIVE without any other words (such as english letters) \n\nIf you still get this error, please contact the technical support!";
+						if (exception.getMessage() == "Negative Liter Number") message = MessageFormat.format("Only positive number is allowed.\n\nYou entered: {0}\nMaybe try: {1}",Double.parseDouble(literInputField.getText()),-Double.parseDouble(literInputField.getText()));
+						JOptionPane.showMessageDialog(null,message,"Message",JOptionPane.ERROR_MESSAGE);
 						literInputField.setText("");
 					}
 				}
@@ -57,8 +59,8 @@ public class Question1 {
 		MainWindow.add(inputLabel);
 
 		//Some Configurations and Display Window
-		MainWindow.setLayout(null);
 		MainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //Sets Close Button to EXIT instead of hide window!!
-		MainWindow.setVisible(true);
+		MainWindow.setResizable(false); //makes the window not resizable
+		MainWindow.setVisible(true); //display the window
     }
 }

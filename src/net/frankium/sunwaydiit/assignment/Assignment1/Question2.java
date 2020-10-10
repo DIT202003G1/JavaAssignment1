@@ -11,7 +11,7 @@ public class Question2 {
 	public static void main(String[] args) {
 
 		//Define GUI Elements
-		final JFrame MainWindow = new JFrame("Production Calculator");
+		final JFrame MainWindow = new JFrame("Number Sorter");
 		JButton sortButton = new JButton("Sort!");
 		JTextField num1Field = new JTextField();
 		JTextField num2Field = new JTextField();
@@ -31,8 +31,8 @@ public class Question2 {
 		MainWindow.add(num2Field);
 		MainWindow.add(num3Field);
 		MainWindow.add(inputLabel);
-		MainWindow.setLayout(null);
-		MainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //Sets Close Button to EXIT instead of hide window!!
+		MainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		MainWindow.setResizable(false);
 		MainWindow.setVisible(true);
 
 		sortButton.addActionListener(
