@@ -227,19 +227,19 @@ public class Question3 {
 		try{
 			if ((Double.parseDouble(inputFields.get("widthField").getText()) <= 0)||(Double.parseDouble(inputFields.get("lengthField").getText()) <= 0)) throw new Exception("Negative Dimensions");
 		}catch(Exception e){
-			ErrMessage += "Width and Length has to be Positive Number (None Zero)\n\n";
+			ErrMessage += " - Width and Length has to be Positive Number (Cannot be Zero or Blank)\n";
 			isError = true;
 		}
 		try{
 			if (Integer.parseInt(inputFields.get("crownField").getText()) < 0) throw new Exception("Negative Crown Number");
 		} catch (Exception e){
-			ErrMessage += "Number of Crowns has to be Positive Whole Number\n\n";
+			ErrMessage += " - Number of Crowns has to be Positive Whole Number or 0 if don't wish to have crown (Cannot be Blank)\n";
 			isError = true;
 		}
 		if (radioButtons.get("customColor").isSelected() && inputFields.get("customColor").getText().isBlank()){
-			ErrMessage += "Color cannot be Blank\n\n";
+			ErrMessage += " - Color cannot be Blank\n";
 			isError = true;
 		}
-		if (isError) throw new Exception(ErrMessage);
+		if (isError) throw new Exception("Please fix the following error:\n\n"+ErrMessage);
 	}
 }
