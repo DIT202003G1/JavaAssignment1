@@ -33,7 +33,7 @@ public class Question1 {
 						if (inputLiters < 0) throw new Exception("Negative Liter Number");
 						double cartons = inputLiters/CARTON_UNIT; //Calculate Cartons Needed
 						double cost = inputLiters * COST_PER_LITER; //Calculate Price
-						double profit = cartons * PROFIT_PER_CARTON; //Calculate Profit
+						double profit = cartons * PROFIT_PER_CARTON; //Calculzuijate Profit
 						JOptionPane.showMessageDialog(null,MessageFormat.format("The calculation result of {0} Liters.\n\nCartons: {1}\nCost: ${2}\nProfit: ${3}",inputLiters,dformat.format(cartons),dformat.format(cost),dformat.format(profit)),"Calculation Result",JOptionPane.INFORMATION_MESSAGE);
 					} catch(Exception exception) {
 						String message = "Something went wrong! Please re-enter the numbers!\n\nThe number has be POSITIVE without any other words (such as english letters) \n\nIf you still get this error, please contact the technical support!";
