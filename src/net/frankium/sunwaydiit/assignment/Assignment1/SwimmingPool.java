@@ -1,7 +1,7 @@
 package net.frankium.sunwaydiit.assignment.Assignment1;
 
 public class SwimmingPool{
-	private double length, width, depth, fillingRate, drainingRate, waterAmount;
+	private double length, width, depth, fillingRate, drainingRate, waterAmount;//All unit in cubic foot or foot
 	private static final double conversionRate = 7.48052;
 	
 	//Constructor
@@ -11,39 +11,32 @@ public class SwimmingPool{
 		this.setDrainingRate(drainingRate);
 		this.setWaterAmount(waterAmount);
 	}
-	//convertors
-	private static double cubicFootToGallon(double cubicFoot){ return cubicFoot * conversionRate; }
-	private static double gallonToCubicFoot(double gallon){ return gallon/conversionRate; }
 	
-	//get volume
-	public double getVolume(){ return length * width * depth; }
-	public double getEmptyVolume(){ return (length * width * depth) - gallonToCubicFoot(waterAmount); }
-	public double getFilledVolume(){ return gallonToCubicFoot(waterAmount); }
-	
-	// fill, drain water
-	public void fillWaterAtRate(double time, double rate){
-		waterAmount += ( time * rate);
-		if (waterAmount > cubicFootToGallon(getVolume()) ){
-			waterAmount = cubicFootToGallon(getVolume()) ;
-			System.out.println("Pool Overflow");
-		}
-	};
-	public void drainWaterAtRate(double time, double drainRate){
-		waterAmount -= (time * drainRate);
-		if (waterAmount < 0) {
-			waterAmount = 0;
-			return;
-		}
+	//operations
+	//Add water
+	public void addWaterByCubicFoot(double time, double cubicFootPerTime){
+		double amount = time*cubicFootPerTime;
+		if (amount + this.waterAmount > getEmptySpaceInCubicFoot()) this.waterAmount = getVolumeInCubicFoot();
+		else this.waterAmount += amount;
 	}
-	
-	public int timeToFillThePool(){return (int) (  ( cubicFootToGallon(getVolume()) - waterAmount) / fillingRate);}
-	public int timeToDrainThePool(){return(int)(waterAmount/drainingRate + 0.5);}
-	
-	//calculate how much water is needed to fill in the pool completely
-	public double waterNeededToFillPool(){
-		if (waterAmount < cubicFootToGallon( getVolume())){
-			return cubicFootToGallon( getVolume()) - waterAmount;
-		}return 0;
+	public void addWaterByGallon(double time, double gallonPerTime){
+		this.addWaterByCubicFoot(time,gallonToCubicFoot(gallonPerTime));
+	}
+	//drain water
+	public void drainWaterByCubicFoot(double time, double cubicFootPerTime){
+		double amount = time * cubicFootPerTime;
+		if (this.waterAmount - amount < 0) this.waterAmount = 0;
+		else this.waterAmount -= amount;
+	}
+	public void drainWaterByGallon(double time, double gallonPerTime){
+		this.drainWaterByCubicFoot(time,gallonToCubicFoot(gallonPerTime));
+	}
+	//timeCalculation
+	public double timeToDrain(){
+		return this.getWaterAmount()/this.drainingRate;
+	}
+	public double timeToFill(){
+		return this.getEmptySpaceInCubicFoot()/this.fillingRate;
 	}
 	
 	//setters
@@ -56,4 +49,13 @@ public class SwimmingPool{
 	public double[] getDimensions(){ return new double[]{this.length,this.width,this.depth};}
 	public double getFillingRate(){return this.fillingRate; }
 	public double getDrainingRate(){return this.drainingRate; }
+	//other getters (derived attributes)
+	public double getVolumeInCubicFoot(){return this.length * this.width * this.depth;}
+	public double getVolumeInGallon(){return cubicFootToGallon(this.getVolumeInCubicFoot());}
+	public double getEmptySpaceInCubicFoot(){return this.getVolumeInCubicFoot() - waterAmount;}
+	public double getEmptySpaceInGallon(){return cubicFootToGallon(getEmptySpaceInCubicFoot());}
+	public double getWaterAmountInGallon(){return cubicFootToGallon(this.waterAmount);}
+	//convertors
+	private static double cubicFootToGallon(double cubicFoot){ return cubicFoot * conversionRate; }
+	private static double gallonToCubicFoot(double gallon){ return gallon/conversionRate; }
 }
