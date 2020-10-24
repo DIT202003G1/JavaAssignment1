@@ -31,11 +31,14 @@ public class SwimmingPool{
 	public void drainWaterByGallon(double time, double gallonPerTime){
 		this.drainWaterByCubicFoot(time,gallonToCubicFoot(gallonPerTime));
 	}
+	
 	//timeCalculation
 	public double timeToDrain(){
+		if (this.drainingRate == 0) return 0;
 		return this.getWaterAmount()/this.drainingRate;
 	}
 	public double timeToFill(){
+		if (this.fillingRate == 0) return 0;
 		return this.getEmptySpaceInCubicFoot()/this.fillingRate;
 	}
 	
