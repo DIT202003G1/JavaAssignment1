@@ -18,7 +18,7 @@ This program is to calculate Cartons, Cost and Profit from inputted Milk Product
 
 #### Design (Flowchart or UML diagram)
 
-![image-20201030181010951](Document Q1.assets/image-20201030181010951.png)
+![image-20201030181010951](./Document Q1.assets/image-20201030181010951.png)
 
 #### How To Use (Expected Inputs  and Outputs, Steps)
 
