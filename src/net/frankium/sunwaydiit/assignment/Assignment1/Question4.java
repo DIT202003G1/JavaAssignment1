@@ -92,7 +92,7 @@ public class Question4 {
 				if (numOfPersonalTrainingSession <= 0) throw new Exception("Inputted Negative/Zero");
 				break;
 			}catch(Exception e){ msgbox("Please enter a positive whole number","Error"); }
-		}
+		}   
 		//calculation
 		String message = "The membership cost is: $" + df.format(calculateCost(chargeOfRegularMembership,numOfMonth,costOfPersonalTraining,numOfPersonalTrainingSession,isSeniorCitizen,(numOfPersonalTrainingSession>5),(numOfMonth>=12)));
 		msgbox(message,"Result");
